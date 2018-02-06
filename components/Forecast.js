@@ -1,13 +1,28 @@
 import { Component } from 'react';
 import Layout from './Layout';
+import Form from './form';
 
-export default class Index extends Component { 
+export default class Forecast extends Component { 
+ 
+  state = {
+    fields:  {}
+  };
+
+  onChange = updatedValue => {
+    this.setState ({ fields: {
+      ...this.state.fields,
+      ...updatedValue
+      }
+    });
+  };
+
 render() {
    return (
        <Layout>
-         <div>
-             <h1> Hello Weather Forecast! </h1>
-         </div>
+         <Form onChange={fields => this.onChange(fields)} />
+         <p> 
+           {JSON.stringify(this.state.fields, null, 2)}
+         </p>
        </Layout>
       )
    }
