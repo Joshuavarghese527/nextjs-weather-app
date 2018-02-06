@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Layout from './Layout';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Form from './form';
 
 export default class Forecast extends Component { 
@@ -18,12 +19,12 @@ export default class Forecast extends Component {
 
 render() {
    return (
-       <Layout>
+     <MuiThemeProvider>
          <Form onChange={fields => this.onChange(fields)} />
          <p> 
            {JSON.stringify(this.state.fields, null, 2)}
          </p>
-       </Layout>
+    </MuiThemeProvider>
       )
    }
  }

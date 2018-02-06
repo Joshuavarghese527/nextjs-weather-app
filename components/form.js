@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import TextField from 'material-ui/TextField';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default class Form extends React.Component {
   state = {
-    zipCode: ''
+    zipCode: "",
+    zipCodeError: ""
   }
 
   change = (e) => {
@@ -12,25 +15,57 @@ export default class Form extends React.Component {
     });
   };
 
+
+
+
+  validate = () => {    
+    const isValidZip =  /^([0-9]){5}(([ ]|[-])?([0-9]){4})?$/;
+    let isError = false;
+    const errors = {
+      zipcodeError: ""
+    };
+
+    if (!this.state.zipCode.match(isValidZip)) {
+      isError = true;
+      errors.zipCodeError = "Zipcode is invalid, please enter a valid zipcode";
+    }
+
+    if (isError) {
+      this.setState({
+        ...this.state,
+        ...errors
+      });
+    }
+
+    return isError;
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
     //this.props.onSubmit(this.state);
+    const err = this.validate();
+    if(!err){
+    //clear form
     this.setState({
-      zipCode: ""
+      zipCode: "",
+      zipCodeError: ""
     });
     this.props.onChange({
       zipCode: ""
     });
   }
+}
 
 
   render() {
     return (
       <form>
-          <input name="zipCode"
-                 placeholder='00000' 
+          <TextField 
+                 name="zipCode"
+                 hintText='00000' 
                  value={this.state.zipCode}
                  onChange={e => this.change(e)}
+                 errorText={this.state.zipCodeError}
            />
           <button onClick={e => this.onSubmit(e)}>Submit Button </button>
       </form>
