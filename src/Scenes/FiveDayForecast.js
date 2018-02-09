@@ -30,7 +30,7 @@ const WeatherBoxLine = ({ color }) => (
   render() {
    return (
   <ForecastWrapper>
-  <div className="ForecastView">
+  <div id="forecast" className="ForecastView">
     {this.props.loading ? (
       <Loading />
     ) : (

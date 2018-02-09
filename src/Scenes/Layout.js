@@ -12,13 +12,7 @@ const Layout = (props) => (
        />
       <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
-          <meta
-            name="viewport"
-            content={
-              'user-scalable=0, initial-scale=1, ' +
-              'minimum-scale=1, width=device-width, height=device-height'
-            }
-          />
+         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
   {props.children}

@@ -1,11 +1,12 @@
-import { Component } from 'react';
+import React from 'react';
+import TextField from 'material-ui/TextField';
 import { ToastContainer, toast } from 'react-toastify';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import Arrow from 'material-ui/svg-icons/navigation/arrow-downward';
-import Forecast from './Forecast';
+import Forecast from '../Scenes/Forecast';
 import Router from 'next/router';
-import { FormWrapper, Div, Paragraph, Input, H1, styles } from '../components/styles'
+import { FormWrapper, Div, Paragraph, Input, H1, styles } from './styles'
 
 const smoothScroll = (h) => {
   let i = h || 0;
@@ -34,7 +35,7 @@ export default class Form extends React.Component {
   }
 
 
-  validate = () => {
+  validate = () => {    
     const isValidZip =  /^([0-9]){5}(([ ]|[-])?([0-9]){4})?$/;
     let isError = false;
     const errors = {
@@ -46,23 +47,19 @@ export default class Form extends React.Component {
       errors.zipCodeError = toast.error("⚠ Please enter a valid zipcode!", {
       position: toast.POSITION.TOP_RIGHT
     });
-    } else {
-      toast.success(`Success! 5-day forecast for ${this.state.zipcode}`, {
-      position: toast.POSITION.TOP_RIGHT
-    });
-    Router.push('/').then(() => smoothScroll());
+    }
 
     this.setState(errors);
 
     return isError;
-  }
- };
+
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
     const err = this.validate();
-
     if(!err){
+    Router.push('/').then(() => smoothScroll());
     this.setState({
       zipcode: this.state.zipcode,
       zipCodeError: "",

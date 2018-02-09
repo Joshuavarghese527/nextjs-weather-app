@@ -14,15 +14,18 @@ export default class Forecast extends Component {
   }
 
   async componentDidMount() {
+    this.setState({ loading: true });
     this.findWeatherAt(this.props.zipcode);
   }
 
   async componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
     this.findWeatherAt(nextProps.zipcode);
   }
 
   async findWeatherAt(zipcode) {
     try {
+    this.setState({ loading: true });
     console.log('Looking up forecast for zipcode:', zipcode);
     const res = await axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?zip=${zipcode}&units=imperial&appid=${API_KEY}&value&cnt=5`);
     console.log('Retrieved forecast for zipcode', zipcode, res.data);
@@ -41,10 +44,12 @@ export default class Forecast extends Component {
 
 render() {
    return (
+     <div>
      <FiveDayForecast
         forecast={this.state.forecast}
         loading={this.state.loading}
      />
+     </div>
    );
  }
 }

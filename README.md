@@ -1,5 +1,17 @@
 ## Front-End Project (Weather App)
 
+### Install:
+
+Step 1: 
+```
+npm install
+```
+
+Step 2: 
+```
+npm run dev
+```
+
 ### The​ ​UI:
 
 You ​should ​have ​a ​webpage ​that ​has ​two ​sections, ​each ​of ​which ​should ​take ​100% ​of ​the ​window’s
@@ -36,3 +48,10 @@ arrow ​functions, ​etc.) ​to ​write ​clean, ​concise, ​and ​main
 ● Use ​version ​control ​to ​effectively ​track ​feature, ​bug ​fixes, ​and ​refactoring.
 
 ● You ​may ​use ​the ​internet ​to ​do ​research, ​but ​please ​do ​not ​copy ​any ​code ​without ​citing ​it.
+
+## Credits
+Styled Components =>[Styled Componenets](https://github.com/styled-components/styled-components).
+Format Dates => [Moment](https://github.com/moment/moment).
+Material UI Fonts => [Material UI](https://github.com/mui-org/material-ui).
+Fetch API => [Axios](https://github.com/axios/axios).
+
